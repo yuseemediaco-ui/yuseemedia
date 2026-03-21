@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yuseemedia | Social Media Manager & Ads Strategist</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:    #0e0e0e;
+    --paper:  #f7f5f0;
+    --muted:  #7a7670;
+    --line:   #e0ddd7;
+    --tag-bg: #eeece7;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 860px; margin: 0 auto; padding: 0 32px; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(247,245,240,0.93);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+    padding: 18px 0;
+  }
+  nav .container { display: flex; align-items: center; justify-content: space-between; }
+  .nav-name { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { text-decoration: none; color: var(--muted); font-size: 13px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--ink); }
+
+  .hero { padding: 148px 0 96px; border-bottom: 1px solid var(--line); }
+  .hero-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+  .hero-eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--muted); }
+  .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(42px, 7vw, 72px); font-weight: 300; line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 28px; }
+  .hero h1 em { font-style: italic; font-weight: 300; }
+  .hero-desc { max-width: 520px; color: var(--muted); font-size: 15px; line-height: 1.75; margin-bottom: 40px; }
+  .hero-cta { display: inline-flex; align-items: center; gap: 10px; background: var(--ink); color: #fff; text-decoration: none; padding: 14px 28px; font-size: 13px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: background 0.2s, transform 0.2s; }
+  .hero-cta:hover { background: #333; transform: translateY(-1px); }
+  .hero-stats { display: flex; gap: 48px; margin-top: 64px; padding-top: 40px; border-top: 1px solid var(--line); }
+  .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 600; line-height: 1; }
+  .stat-label { font-size: 12px; color: var(--muted); letter-spacing: 0.04em; margin-top: 4px; }
+
+  section { padding: 80px 0; border-bottom: 1px solid var(--line); }
+  .section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 40px; display: flex; align-items: center; gap: 12px; }
+  .section-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--muted); }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 4vw, 40px); font-weight: 300; line-height: 1.2; margin-bottom: 16px; }
+  .section-sub { color: var(--muted); max-width: 480px; font-size: 14px; margin-bottom: 56px; }
+
+  .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .service-card { background: var(--paper); padding: 36px 32px; transition: background 0.2s; }
+  .service-card:hover { background: #f0ede6; }
+  .service-num { font-family: 'Cormorant Garamond', serif; font-size: 13px; color: var(--muted); margin-bottom: 16px; letter-spacing: 0.08em; }
+  .service-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; margin-bottom: 10px; line-height: 1.3; }
+  .service-desc { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+  .work-item { display: grid; grid-template-columns: 1fr 2fr; gap: 48px; padding: 40px 0; border-bottom: 1px solid var(--line); align-items: start; }
+  .work-item:last-child { border-bottom: none; }
+  .work-tag { display: inline-block; background: var(--tag-bg); color: var(--muted); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 10px; margin-bottom: 12px; }
+  .work-client { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; margin-bottom: 4px; }
+  .work-type { font-size: 12px; color: var(--muted); }
+  .work-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; font-style: italic; margin-bottom: 12px; line-height: 1.3; }
+  .work-desc { font-size: 13px; color: var(--muted); line-height: 1.75; margin-bottom: 20px; }
+  .work-results { display: flex; gap: 12px; flex-wrap: wrap; }
+  .result-pill { background: var(--ink); color: #fff; font-size: 12px; padding: 6px 14px; letter-spacing: 0.04em; }
+
+  .process-step { display: grid; grid-template-columns: 64px 1fr; gap: 32px; padding: 32px 0; border-bottom: 1px solid var(--line); align-items: start; }
+  .process-step:last-child { border-bottom: none; }
+  .step-num { font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 300; color: var(--line); line-height: 1; }
+  .step-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; margin-bottom: 6px; }
+  .step-desc { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+  .testimonial { background: var(--tag-bg); padding: 32px 36px; margin-bottom: 24px; position: relative; }
+  .testimonial::before { content: '\201C'; font-family: 'Cormorant Garamond', serif; font-size: 80px; color: var(--line); position: absolute; top: 8px; left: 28px; line-height: 1; }
+  .testimonial-text { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 300; font-style: italic; line-height: 1.6; margin-bottom: 20px; padding-top: 16px; position: relative; z-index: 1; }
+  .testimonial-author { font-size: 12px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+
+  .cta-section { padding: 96px 0; text-align: center; border-bottom: none !important; }
+  .cta-section .section-label { justify-content: center; }
+  .cta-section .section-label::before { display: none; }
+  .cta-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 5vw, 58px); font-weight: 300; line-height: 1.2; margin-bottom: 16px; }
+  .cta-sub { color: var(--muted); margin-bottom: 40px; font-size: 14px; }
+  .cta-email { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink); padding-bottom: 2px; transition: opacity 0.2s; }
+  .cta-email:hover { opacity: 0.5; }
+  .cta-links { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 40px; }
+  .cta-links a { font-size: 12px; color: var(--muted); text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; border-bottom: 1px solid var(--line); padding-bottom: 2px; transition: color 0.2s; }
+  .cta-links a:hover { color: var(--ink); }
+
+  footer { padding: 28px 0; border-top: 1px solid var(--line); }
+  footer .container { display: flex; align-items: center; justify-content: space-between; }
+  .footer-name { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-weight: 600; }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--ink); }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 640px) {
+    .container { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 110px 0 72px; }
+    .hero-stats { gap: 28px; flex-wrap: wrap; }
+    .services-grid { grid-template-columns: 1fr; }
+    .work-item { grid-template-columns: 1fr; gap: 16px; }
+    .process-step { grid-template-columns: 44px 1fr; gap: 16px; }
+    footer .container { flex-direction: column; gap: 16px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <span class="nav-name">Yuseemedia</span>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-eyebrow">Social Media Manager &amp; Ads Strategist</div>
+    <h1>Growing brands through<br><em>strategy, content,</em><br>and paid media.</h1>
+    <p class="hero-desc">I help businesses build a consistent social media presence and run ads that actually convert, so you stop wasting money and start getting clients.</p>
+    <a href="#contact" class="hero-cta">Work with me &rarr;</a>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">3+</div>
+        <div class="stat-label">Years experience</div>
+      </div>
+      <div>
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Long term clients</div>
+      </div>
+      <div>
+        <div class="stat-num">4</div>
+        <div class="stat-label">Core services</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <div class="section-label">What I do</div>
+    <h2 class="section-title">Services built around<br>real business outcomes</h2>
+    <p class="section-sub">Every service is tied to a goal: more reach, more leads, more revenue.</p>
+    <div class="services-grid fade-in">
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <div class="service-title">Facebook &amp; Instagram Ads</div>
+        <div class="service-desc">From campaign setup to creative and targeting, I build ads that bring in leads and sales, not just clicks. Full pixel setup, retargeting, and ongoing optimisation included.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <div class="service-title">Content Strategy &amp; Planning</div>
+        <div class="service-desc">A clear content calendar with purpose behind every post. I plan content that builds trust, drives engagement, and moves your audience toward a decision.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <div class="service-title">Social Media Growth</div>
+        <div class="service-desc">Consistent posting, hashtag strategy, audience targeting, and engagement tactics that grow your following with the right people, not just vanity numbers.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-num">04</div>
+        <div class="service-title">Community Management</div>
+        <div class="service-desc">Daily monitoring, comment replies, DM handling, and brand voice consistency so your audience always feels heard and your page stays active and credible.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="container">
+    <div class="section-label">Selected work</div>
+    <h2 class="section-title">Results from real engagements</h2>
+    <p class="section-sub">A sample of work across different business types and goals.</p>
+    <div class="fade-in">
+
+      <div class="work-item">
+        <div>
+          <div class="work-tag">Coaching Business</div>
+          <div class="work-client">Bloom Coaching Co.</div>
+          <div class="work-type">Social Media Management</div>
+        </div>
+        <div>
+          <div class="work-title">Building a consistent presence from a nearly dormant page</div>
+          <div class="work-desc">The client had an active business but an almost completely ignored social media page, with inconsistent posts, no engagement strategy, and no content plan. I audited the account, built a 30 day content calendar, and managed posting and community engagement throughout.</div>
+          <div class="work-results">
+            <span class="result-pill">Engagement rate improved</span>
+            <span class="result-pill">Consistent weekly posting</span>
+            <span class="result-pill">Audience growth</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-item">
+        <div>
+          <div class="work-tag">Law Firm</div>
+          <div class="work-client">Eulenda Attorneys</div>
+          <div class="work-type">Facebook Ads and Content</div>
+        </div>
+        <div>
+          <div class="work-title">Reducing wasted ad spend and improving campaign performance</div>
+          <div class="work-desc">Inherited a running Facebook Ads account with a high cost per result and no retargeting in place. Audited the account, restructured the campaign, installed proper pixel tracking, and introduced a retargeting sequence for warm audiences.</div>
+          <div class="work-results">
+            <span class="result-pill">Cost per result reduced</span>
+            <span class="result-pill">Pixel and retargeting set up</span>
+            <span class="result-pill">ROAS improved</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-item">
+        <div>
+          <div class="work-tag">Service Business</div>
+          <div class="work-client">Crestline Media</div>
+          <div class="work-type">Content Strategy and Growth</div>
+        </div>
+        <div>
+          <div class="work-title">Creating a content system that runs without constant effort</div>
+          <div class="work-desc">This client was posting sporadically with no strategy, publishing whatever felt right on the day. I built a repeatable content framework: 3 content pillars, a monthly calendar template, graphic templates in Canva, and a caption structure that stayed on brand every time.</div>
+          <div class="work-results">
+            <span class="result-pill">Content system built</span>
+            <span class="result-pill">3 content pillars defined</span>
+            <span class="result-pill">Post consistency improved</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="container">
+    <div class="section-label">How I work</div>
+    <h2 class="section-title">A clear process,<br>no guesswork</h2>
+    <p class="section-sub">Every engagement follows the same structured approach so you always know what is happening.</p>
+    <div class="fade-in">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <div>
+          <div class="step-title">Audit and Discovery</div>
+          <div class="step-desc">I review your current social media presence, past ad performance, competitors, and target audience. This tells me exactly where the gaps are before I touch anything.</div>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <div>
+          <div class="step-title">Strategy and Plan</div>
+          <div class="step-desc">Based on the audit, I put together a content or ad strategy tailored to your goals, whether that is brand awareness, lead generation, or direct sales.</div>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <div>
+          <div class="step-title">Execution</div>
+          <div class="step-desc">I handle everything: content creation, scheduling, ad setup, community management. You approve, I execute. Regular updates so you are never out of the loop.</div>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <div>
+          <div class="step-title">Review and Optimise</div>
+          <div class="step-desc">Monthly reporting on what is working and what is not. I adjust strategy based on real data, not guesswork, and share the numbers with you in plain language.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-label">What clients say</div>
+    <h2 class="section-title">Feedback from past work</h2>
+    <p class="section-sub">Real words from real engagements.</p>
+    <div class="fade-in">
+      <div class="testimonial">
+        <div class="testimonial-text">The results spoke for themselves. Our page went from barely any activity to consistent, quality content every week. What I appreciated most was that they actually understood our audience. It did not feel generic at all.</div>
+        <div class="testimonial-author">Bloom Coaching Co.</div>
+      </div>
+      <div class="testimonial">
+        <div class="testimonial-text">Our Facebook Ads were eating budget with very little to show for it. After the account restructure, we started seeing a clear improvement in our cost per lead. Very happy with the work.</div>
+        <div class="testimonial-author">Eulenda Attorneys</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="cta-section">
+  <div class="container">
+    <div class="section-label">Get in touch</div>
+    <h2 class="cta-title">Ready to grow<br><em>your social presence?</em></h2>
+    <p class="cta-sub">Available for new projects. Response within 24 hours.</p>
+    <a href="mailto:yuseemediaco@gmail.com" class="cta-email">yuseemediaco@gmail.com</a>
+    <div class="cta-links">
+      <a href="https://www.upwork.com/freelancers/~01411b00c159301aee?mp_source=share" target="_blank">Upwork Profile</a>
+      <a href="https://youtube.com/@scalesocial-co" target="_blank">YouTube Channel</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <span class="footer-name">Yuseemedia</span>
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
